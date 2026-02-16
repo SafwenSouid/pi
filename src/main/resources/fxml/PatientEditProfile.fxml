@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.PatientEditProfileController"
+            prefWidth="1000" prefHeight="800"
+            style="-fx-background-color: #F5F7FA;">
+
+    <!-- Header -->
+    <top>
+        <VBox style="-fx-background-color: white; -fx-border-color: #E5E9F0; -fx-border-width: 0 0 1 0;">
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 20 40;">
+                <Button fx:id="backButton" styleClass="back-button" onAction="#handleBack">
+                    <graphic>
+                        <HBox spacing="10" alignment="CENTER">
+                            <Label text="←" style="-fx-font-size: 24px; -fx-text-fill: #4A4A4A;"/>
+                            <Label text="Retour" style="-fx-font-size: 16px; -fx-text-fill: #4A4A4A;"/>
+                        </HBox>
+                    </graphic>
+                </Button>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox spacing="15" alignment="CENTER">
+                    <Label text="🧠" style="-fx-font-size: 32px; -fx-text-fill: #1F3C88;"/>
+                    <Label text="MENSOS" style="-fx-font-size: 24px; -fx-font-weight: 900; -fx-text-fill: #1F3C88;"/>
+                    <Label text="•" style="-fx-font-size: 24px; -fx-text-fill: #7BC6A4;"/>
+                    <Label text="Modifier mon profil" style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #4A4A4A;"/>
+                </HBox>
+                <Region HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Content -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
+            <VBox spacing="30" style="-fx-padding: 40 80;">
+
+                <!-- ========== PHOTO DE PROFIL ========== -->
+                <VBox spacing="20" alignment="CENTER"
+                      style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+
+                    <Label text="Photo de profil"
+                           style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <HBox spacing="40" alignment="CENTER">
+                        <!-- Avatar -->
+                        <StackPane>
+                            <Circle radius="80" style="-fx-fill: #E8F0FE; -fx-stroke: #7BC6A4; -fx-stroke-width: 3;"/>
+                            <Label fx:id="avatarInitials" text="JD"
+                                   style="-fx-font-size: 48px; -fx-font-weight: 800; -fx-text-fill: #1F3C88;"/>
+                            <ImageView fx:id="profileImageView" fitWidth="160" fitHeight="160"
+                                       style="-fx-background-radius: 80; -fx-border-radius: 80; -fx-border-color: #7BC6A4; -fx-border-width: 3;"
+                                       preserveRatio="true" visible="false"/>
+                        </StackPane>
+
+                        <VBox spacing="15" alignment="CENTER_LEFT">
+                            <Label text="Téléchargez votre photo de profil"
+                                   style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            <Label text="Formats acceptés: JPG, PNG (max 2 Mo)"
+                                   style="-fx-font-size: 13px; -fx-text-fill: #7F8C8D;"/>
+                            <HBox spacing="15">
+                                <Button fx:id="uploadImageButton"
+                                        text="Choisir une image"
+                                        onAction="#handleUploadImage"
+                                        style="-fx-background-color: #1F3C88; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 30; -fx-padding: 10 25; -fx-cursor: hand;"/>
+                                <Button fx:id="removeImageButton"
+                                        text="Supprimer"
+                                        onAction="#handleRemoveImage"
+                                        style="-fx-background-color: #FEF5F5; -fx-text-fill: #E74C3C; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 30; -fx-padding: 10 25; -fx-cursor: hand;"/>
+                            </HBox>
+                            <Label fx:id="imageFileNameLabel" text="Aucune photo"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D; -fx-font-style: italic;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- ========== INFORMATIONS PERSONNELLES ========== -->
+                <VBox spacing="20"
+                      style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+
+                    <Label text="Informations personnelles"
+                           style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <GridPane hgap="30" vgap="20" style="-fx-padding: 10 0;">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="30"/>
+                            <ColumnConstraints percentWidth="70"/>
+                        </columnConstraints>
+
+                        <!-- Nom -->
+                        <Label text="Nom :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <TextField fx:id="nomField" promptText="Votre nom"
+                                       styleClass="modern-field" prefHeight="45"/>
+                        </VBox>
+
+                        <!-- Prénom -->
+                        <Label text="Prénom :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
+                            <TextField fx:id="prenomField" promptText="Votre prénom"
+                                       styleClass="modern-field" prefHeight="45"/>
+                        </VBox>
+
+                        <!-- Email -->
+                        <Label text="Email :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="2" GridPane.columnIndex="1" spacing="5">
+                            <TextField fx:id="emailField" promptText="votre@email.com"
+                                       styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="emailErrorLabel" text="Email invalide"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 12px; -fx-font-weight: 600;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+
+                        <!-- Téléphone -->
+                        <Label text="Téléphone :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="3" GridPane.columnIndex="1" spacing="5">
+                            <TextField fx:id="telephoneField" promptText="+33 6 12 34 56 78"
+                                       styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="phoneErrorLabel" text="Téléphone invalide"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 12px; -fx-font-weight: 600;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+
+                        <!-- Date de naissance -->
+                        <Label text="Date de naissance :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="4" GridPane.columnIndex="1" spacing="5">
+                            <DatePicker fx:id="dateNaissanceField"
+                                        styleClass="modern-datepicker" prefHeight="45"
+                                        promptText="jj/mm/aaaa"/>
+                            <Label fx:id="ageErrorLabel" text="Âge minimum 18 ans"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 12px; -fx-font-weight: 600;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+
+                <!-- ========== CHANGEMENT DE MOT DE PASSE ========== -->
+                <VBox spacing="20"
+                      style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+
+                    <Label text="Changer le mot de passe"
+                           style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <GridPane hgap="30" vgap="20" style="-fx-padding: 10 0;">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="30"/>
+                            <ColumnConstraints percentWidth="70"/>
+                        </columnConstraints>
+
+                        <!-- Mot de passe actuel -->
+                        <Label text="Mot de passe actuel :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <PasswordField fx:id="currentPasswordField"
+                                           promptText="********"
+                                           styleClass="modern-field" prefHeight="45"/>
+                        </VBox>
+
+                        <!-- Nouveau mot de passe -->
+                        <Label text="Nouveau mot de passe :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" spacing="5">
+                            <PasswordField fx:id="newPasswordField"
+                                           promptText="********"
+                                           styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="passwordErrorLabel" text="Minimum 6 caractères, 1 majuscule, 1 chiffre"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 12px; -fx-font-weight: 600;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+
+                        <!-- Confirmation -->
+                        <Label text="Confirmer :" style="-fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="2" GridPane.columnIndex="1" spacing="5">
+                            <PasswordField fx:id="confirmPasswordField"
+                                           promptText="********"
+                                           styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="confirmErrorLabel" text="Les mots de passe ne correspondent pas"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 12px; -fx-font-weight: 600;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+                    </GridPane>
+
+                    <Label fx:id="passwordStatusLabel"
+                           style="-fx-text-fill: #E74C3C; -fx-font-size: 12px; -fx-font-weight: 600; -fx-padding: 5 0 0 0;"
+                           visible="false" managed="false"/>
+                </VBox>
+
+                <!-- ========== BOUTONS D'ACTION ========== -->
+                <HBox spacing="20" alignment="CENTER" style="-fx-padding: 20 0 40 0;">
+                    <Button fx:id="saveButton"
+                            text="💾 Enregistrer les modifications"
+                            onAction="#handleSave"
+                            style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: 700; -fx-background-radius: 30; -fx-padding: 12 30; -fx-cursor: hand;"
+                            prefWidth="300" prefHeight="50"/>
+                    <Button fx:id="cancelButton"
+                            text="Annuler"
+                            onAction="#handleCancel"
+                            style="-fx-background-color: transparent; -fx-text-fill: #7F8C8D; -fx-font-size: 16px; -fx-font-weight: 600; -fx-border-color: #BDC3C7; -fx-border-width: 2; -fx-border-radius: 30; -fx-background-radius: 30; -fx-padding: 12 30; -fx-cursor: hand;"
+                            prefWidth="150" prefHeight="50"/>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

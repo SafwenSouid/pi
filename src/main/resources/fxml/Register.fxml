@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.RegisterController"
+            prefWidth="1300" prefHeight="800"
+            style="-fx-background-color: white;">
+
+    <!-- LEFT SIDE - Illustration (React left side) -->
+    <left>
+        <VBox alignment="CENTER" spacing="30"
+              prefWidth="650"
+              style="-fx-background-color: linear-gradient(to bottom right, #E8F0FE, #7BC6A4); -fx-padding: 60 40;">
+
+            <ImageView fx:id="leftLogoImageView"
+                       fitWidth="180"
+                       preserveRatio="true"
+                       style="-fx-effect: dropshadow(gaussian, rgba(31,60,136,0.3), 20, 0, 0, 5);"/>
+
+            <Text text="MENSOS"
+                  style="-fx-font-size: 56px; -fx-font-weight: 900; -fx-fill: #1F3C88; -fx-font-family: 'Poppins', 'Segoe UI';"/>
+
+            <Text text="Rejoignez notre communauté dédiée à votre bien-être mental"
+                  style="-fx-font-size: 20px; -fx-fill: #4A4A4A; -fx-font-family: 'Inter', 'Segoe UI';"
+                  wrappingWidth="450"
+                  textAlignment="CENTER"/>
+
+            <HBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: rgba(123,198,164,0.2); -fx-background-radius: 50; -fx-padding: 12 24;">
+                <Label text="✨" style="-fx-font-size: 20px; -fx-text-fill: #7BC6A4;"/>
+                <Label text="Commencez votre parcours aujourd'hui"
+                       style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #7BC6A4;"/>
+            </HBox>
+        </VBox>
+    </left>
+
+    <!-- RIGHT SIDE - Registration Form -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background: white; -fx-background-color: white; -fx-border-color: transparent;">
+            <VBox alignment="CENTER" spacing="20"
+                  style="-fx-padding: 60 80; -fx-max-width: 600; -fx-background-color: white;">
+
+                <!-- Back button -->
+                <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 20 0;">
+                    <Button fx:id="backToLoginButton"
+                            onAction="#handleBackToLogin"
+                            style="-fx-background-color: transparent; -fx-cursor: hand; -fx-padding: 0;">
+                        <graphic>
+                            <HBox alignment="CENTER" spacing="8">
+                                <Label text="←" style="-fx-font-size: 18px; -fx-text-fill: #4A4A4A;"/>
+                                <Label text="Retour à la connexion"
+                                       style="-fx-font-size: 14px; -fx-text-fill: #4A4A4A; -fx-font-weight: 600;"/>
+                            </HBox>
+                        </graphic>
+                    </Button>
+                </HBox>
+
+                <!-- Header avec logo -->
+                <VBox alignment="CENTER" spacing="15" style="-fx-padding: 0 0 20 0;">
+                    <HBox alignment="CENTER" spacing="10">
+                        <Label text="🧠" style="-fx-font-size: 36px; -fx-text-fill: #1F3C88;"/>
+                        <Label text="MENSOS"
+                               style="-fx-font-size: 32px; -fx-font-weight: 900; -fx-text-fill: #1F3C88; -fx-font-family: 'Poppins';"/>
+                    </HBox>
+
+                    <Label text="Créer un compte"
+                           style="-fx-font-size: 28px; -fx-font-weight: 700; -fx-text-fill: #4A4A4A;"/>
+
+                    <Label text="Remplissez les informations ci-dessous"
+                           style="-fx-font-size: 15px; -fx-text-fill: #4A4A4A; -fx-opacity: 0.7;"/>
+                </VBox>
+
+                <!-- Formulaire -->
+                <VBox spacing="20" style="-fx-padding: 10 0;">
+
+                    <!-- Prénom et Nom (2 colonnes) -->
+                    <HBox spacing="20">
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="Prénom" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            <TextField fx:id="prenomField"
+                                       promptText="Jean"
+                                       prefHeight="48"
+                                       styleClass="modern-field"/>
+                        </VBox>
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="Nom" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            <TextField fx:id="nomField"
+                                       promptText="Dupont"
+                                       prefHeight="48"
+                                       styleClass="modern-field"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Email -->
+                    <VBox spacing="8">
+                        <Label text="Email" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                        <TextField fx:id="emailField"
+                                   promptText="votre@email.com"
+                                   prefHeight="48"
+                                   styleClass="modern-field"/>
+                    </VBox>
+
+                    <!-- Téléphone et Date naissance (2 colonnes) -->
+                    <HBox spacing="20">
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="Téléphone" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            <TextField fx:id="numeroTelField"
+                                       promptText="+33 6 12 34 56 78"
+                                       prefHeight="48"
+                                       styleClass="modern-field"/>
+                        </VBox>
+                        <VBox spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="Date de naissance" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            <DatePicker fx:id="dateNaissanceField"
+                                        promptText="jj/mm/aaaa"
+                                        prefHeight="48"
+                                        styleClass="modern-datepicker"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Mot de passe -->
+                    <VBox spacing="8">
+                        <Label text="Mot de passe" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                        <PasswordField fx:id="motDePasseField"
+                                       promptText="••••••••"
+                                       prefHeight="48"
+                                       styleClass="modern-field"/>
+                    </VBox>
+
+                    <!-- Confirmation mot de passe -->
+                    <VBox spacing="8">
+                        <Label text="Confirmer le mot de passe" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                        <PasswordField fx:id="confirmPasswordField"
+                                       promptText="••••••••"
+                                       prefHeight="48"
+                                       styleClass="modern-field"/>
+                    </VBox>
+
+                    <!-- Rôle - Style React Cards -->
+                    <VBox spacing="12" style="-fx-padding: 10 0 0 0;">
+                        <Label text="Je m'inscris en tant que :"
+                               style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+
+                        <HBox spacing="15" alignment="CENTER">
+                            <!-- Patient Card -->
+                            <VBox fx:id="patientCard"
+                                  alignment="CENTER" spacing="8"
+                                  prefWidth="160" prefHeight="120"
+                                  onMouseClicked="#selectRolePatient"
+                                  styleClass="role-card">
+                                <Label text="👤" style="-fx-font-size: 32px;"/>
+                                <Label text="Utilisateur" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            </VBox>
+
+                            <!-- Coach Card -->
+                            <VBox fx:id="coachCard"
+                                  alignment="CENTER" spacing="8"
+                                  prefWidth="160" prefHeight="120"
+                                  onMouseClicked="#selectRoleCoach"
+                                  styleClass="role-card">
+                                <Label text="🌿" style="-fx-font-size: 32px;"/>
+                                <Label text="Coach" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            </VBox>
+
+                            <!-- Psy Card -->
+                            <VBox fx:id="psyCard"
+                                  alignment="CENTER" spacing="8"
+                                  prefWidth="160" prefHeight="120"
+                                  onMouseClicked="#selectRolePsy"
+                                  styleClass="role-card">
+                                <Label text="🧠" style="-fx-font-size: 32px;"/>
+                                <Label text="Psychiatre" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Upload CV Panel (visible pour Coach et Psy) -->
+                    <VBox fx:id="cvUploadPanel"
+                          spacing="15"
+                          visible="false" managed="false"
+                          styleClass="upload-panel">
+
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="📄" style="-fx-font-size: 24px;"/>
+                            <Label text="CV (PDF requis)"
+                                   style="-fx-font-size: 15px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                        </HBox>
+
+                        <HBox spacing="15" alignment="CENTER_LEFT">
+                            <Button fx:id="uploadCVButton"
+                                    text="Choisir un fichier"
+                                    onAction="#handleUploadCV"
+                                    prefWidth="180" prefHeight="45"
+                                    styleClass="upload-button"/>
+                            <Label fx:id="cvFileNameLabel"
+                                   text="Aucun fichier sélectionné"
+                                   styleClass="upload-filename"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Register Button -->
+                    <Button fx:id="registerButton"
+                            text="Créer mon compte"
+                            onAction="#handleRegister"
+                            prefWidth="Infinity" prefHeight="56"
+                            styleClass="btn-primary-register"/>
+
+                    <!-- Terms -->
+                    <Label text="🔒 En créant un compte, vous acceptez nos conditions d'utilisation"
+                           style="-fx-font-size: 12px; -fx-text-fill: #4A4A4A; -fx-opacity: 0.6; -fx-padding: 10 0 0 0;"
+                           alignment="CENTER"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

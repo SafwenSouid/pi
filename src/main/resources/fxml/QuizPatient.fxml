@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.QuizPatientController"
+            prefWidth="1200" prefHeight="800"
+            style="-fx-background-color: #F5F7FA;">
+
+    <!-- HEADER -->
+    <top>
+        <VBox style="-fx-background-color: white; -fx-border-color: #E5E9F0; -fx-border-width: 0 0 1 0;">
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 20 40;">
+                <HBox spacing="15" alignment="CENTER">
+                    <Label text="🧠" style="-fx-font-size: 32px; -fx-text-fill: #1F3C88;"/>
+                    <Label text="MENSOS" style="-fx-font-size: 24px; -fx-font-weight: 900; -fx-text-fill: #1F3C88;"/>
+                    <Label text="•" style="-fx-font-size: 24px; -fx-text-fill: #7BC6A4;"/>
+                    <Label fx:id="quizTitleLabel" text="Évaluation psychologique"
+                           style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #4A4A4A;"/>
+                </HBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <HBox spacing="10" alignment="CENTER"
+                      style="-fx-background-color: #FFF8E7; -fx-background-radius: 30; -fx-padding: 8 20; -fx-border-color: #FFB703; -fx-border-radius: 30; -fx-border-width: 1.5;">
+                    <Label text="✨" style="-fx-font-size: 18px; -fx-text-fill: #FFB703;"/>
+                    <Label text="Analyse IA" style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #FFB703;"/>
+                </HBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- CENTER -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
+            <VBox spacing="30" style="-fx-padding: 30 60;">
+
+                <!-- PROGRESS -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <VBox spacing="5">
+                        <Label text="Votre progression"
+                               style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                        <Label fx:id="questionNumberLabel" text="Question 1/10"
+                               style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #7BC6A4;
+                                      -fx-background-color: #E8F0FE; -fx-padding: 5 15; -fx-background-radius: 20;"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <VBox spacing="5" alignment="CENTER_RIGHT">
+                        <Label text="Score"
+                               style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                        <Label fx:id="scoreLabel" text="0/50"
+                               style="-fx-font-size: 20px; -fx-font-weight: 800; -fx-text-fill: #1F3C88;"/>
+                    </VBox>
+                </HBox>
+
+                <ProgressBar fx:id="progressBar" progress="0.1"
+                             prefWidth="Infinity" prefHeight="16"
+                             style="-fx-accent: #7BC6A4; -fx-background-radius: 10; -fx-background-color: #E8F0FE;"/>
+
+                <!-- QUESTION CARD -->
+                <VBox spacing="25"
+                      style="-fx-background-color: white; -fx-background-radius: 30; -fx-padding: 40;
+                             -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.08), 20, 0, 0, 5);
+                             -fx-border-color: #E8F0FE; -fx-border-radius: 30; -fx-border-width: 1;">
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="❓" style="-fx-font-size: 32px; -fx-text-fill: #1F3C88;
+                                               -fx-background-color: #E8F0FE; -fx-background-radius: 50;
+                                               -fx-padding: 15; -fx-min-width: 70; -fx-min-height: 70;
+                                               -fx-alignment: center;"/>
+                        <VBox spacing="8">
+                            <Label text="Question"
+                                   style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #7BC6A4;
+                                          -fx-background-color: #F0F9F0; -fx-padding: 4 12; -fx-background-radius: 20;"/>
+                            <Label fx:id="questionContentLabel"
+                                   text="Contenu de la question..."
+                                   wrapText="true"
+                                   style="-fx-font-size: 22px; -fx-font-weight: 700; -fx-text-fill: #2C3E50;
+                                          -fx-line-spacing: 8;"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator style="-fx-background-color: #E8F0FE; -fx-pref-height: 2;"/>
+
+                    <!-- ANSWERS SECTION - AVEC NUMÉROS 1-5 -->
+                    <VBox spacing="20">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Label text="📊" style="-fx-font-size: 24px;"/>
+                            <Label text="Sélectionnez votre niveau d'accord"
+                                   style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                            <HBox spacing="5" alignment="CENTER"
+                                  style="-fx-background-color: #FFB703; -fx-background-radius: 20; -fx-padding: 4 15;">
+                                <Label text="1" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 800;"/>
+                                <Label text="-" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+                                <Label text="5" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 800;"/>
+                            </HBox>
+                        </HBox>
+
+                        <!-- ANSWERS CONTAINER - Les RadioButtons seront ajoutés dynamiquement avec les numéros -->
+                        <VBox fx:id="answersContainer" spacing="12" style="-fx-padding: 10 0 0 0;">
+                            <!--
+                                Les RadioButtons seront générés dans le contrôleur avec ce format :
+                                1 - Pas du tout d'accord
+                                2 - Plutôt pas d'accord
+                                3 - Neutre
+                                4 - Plutôt d'accord
+                                5 - Tout à fait d'accord
+                            -->
+                        </VBox>
+
+                        <!-- IA TIP -->
+                        <HBox spacing="15" alignment="CENTER_LEFT"
+                              style="-fx-background-color: #F8FDFA; -fx-background-radius: 16; -fx-padding: 15;
+                                     -fx-border-color: #7BC6A4; -fx-border-radius: 16; -fx-border-width: 1;
+                                     -fx-border-style: dashed;">
+                            <Label text="💡" style="-fx-font-size: 24px; -fx-text-fill: #7BC6A4;"/>
+                            <Label text="Prenez le temps de réfléchir, il n'y a pas de bonne ou mauvaise réponse"
+                                   style="-fx-font-size: 14px; -fx-text-fill: #4A4A4A; -fx-font-style: italic;"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- NAVIGATION -->
+                <HBox spacing="20" alignment="CENTER_RIGHT" style="-fx-padding: 20 0 40 0;">
+                    <Button fx:id="previousButton"
+                            text="← Précédent"
+                            onAction="#handlePrevious"
+                            prefWidth="150" prefHeight="50"
+                            style="-fx-background-color: white; -fx-text-fill: #4A4A4A; -fx-font-size: 15px;
+                                   -fx-font-weight: 600; -fx-border-color: #BDC3C7; -fx-border-width: 2;
+                                   -fx-border-radius: 30; -fx-background-radius: 30; -fx-cursor: hand;"/>
+
+                    <Button fx:id="nextButton"
+                            text="Suivant →"
+                            onAction="#handleNext"
+                            prefWidth="150" prefHeight="50"
+                            style="-fx-background-color: #1F3C88; -fx-text-fill: white; -fx-font-size: 15px;
+                                   -fx-font-weight: 700; -fx-background-radius: 30; -fx-cursor: hand;
+                                   -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.2), 10, 0, 0, 2);"/>
+
+                    <Button fx:id="submitButton"
+                            text="✅ Terminer le quiz"
+                            onAction="#handleSubmit"
+                            visible="false" managed="false"
+                            prefWidth="200" prefHeight="50"
+                            style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-size: 15px;
+                                   -fx-font-weight: 700; -fx-background-radius: 30; -fx-cursor: hand;
+                                   -fx-effect: dropshadow(gaussian, rgba(39,174,96,0.2), 10, 0, 0, 2);"/>
+                </HBox>
+
+                <!-- FOOTER -->
+                <VBox alignment="CENTER" spacing="10" style="-fx-padding: 20 0 0 0;">
+                    <Separator style="-fx-background-color: #E8F0FE; -fx-pref-width: 600;"/>
+                    <HBox spacing="20" alignment="CENTER">
+                        <Label text="🧘" style="-fx-font-size: 16px;"/>
+                        <Label text="Respirez profondément • Répondez honnêtement • Prenez votre temps"
+                               style="-fx-font-size: 13px; -fx-text-fill: #7F8C8D; -fx-font-weight: 500;"/>
+                    </HBox>
+                    <Label text="© 2026 MENSOS - Votre bien-être mental"
+                           style="-fx-font-size: 11px; -fx-text-fill: #BDC3C7; -fx-padding: 10 0 0 0;"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- STATUS -->
+    <bottom>
+        <Label fx:id="statusLabel"
+               style="-fx-background-color: #FEF5F5; -fx-text-fill: #E74C3C; -fx-padding: 15;
+                      -fx-font-size: 14px; -fx-font-weight: 600; -fx-alignment: center;
+                      -fx-border-color: #E74C3C; -fx-border-width: 1; -fx-border-style: dashed;
+                      -fx-max-width: Infinity;"
+               managed="false" visible="false"/>
+    </bottom>
+</BorderPane>

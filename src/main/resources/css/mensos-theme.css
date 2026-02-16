@@ -1,0 +1,485 @@
+/* ============================================
+   MENSOS - REACT STYLE TO JAVAFX
+   Design inspiré de l'interface React/Next.js
+============================================= */
+
+/* ============== STYLES GÉNÉRAUX ============== */
+.root {
+    -fx-font-family: 'Inter', 'Segoe UI', 'Poppins', sans-serif;
+}
+
+/* ============== MODERN FIELDS ============== */
+.modern-field {
+    -fx-background-color: #F5F7FA;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-padding: 0 16;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #9AA6B2;
+    -fx-transition: all 0.2s ease;
+}
+
+.modern-field:hover {
+    -fx-background-color: white;
+    -fx-border-color: #7BC6A4;
+    -fx-border-width: 2;
+}
+
+.modern-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #7BC6A4;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.2), 8, 0, 0, 0);
+}
+
+/* ============== MODERN DATEPICKER ============== */
+.modern-datepicker {
+    -fx-background-color: #F5F7FA;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: transparent;
+}
+
+.modern-datepicker:hover {
+    -fx-background-color: white;
+    -fx-border-color: #7BC6A4;
+}
+
+.modern-datepicker:focused {
+    -fx-background-color: white;
+    -fx-border-color: #7BC6A4;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.2), 8, 0, 0, 0);
+}
+
+.modern-datepicker .text-field {
+    -fx-background-color: transparent;
+    -fx-background-radius: 12 0 0 12;
+    -fx-padding: 0 0 0 16;
+}
+
+.modern-datepicker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 12 12 0;
+    -fx-padding: 0 16;
+}
+
+.modern-datepicker .arrow-button:hover {
+    -fx-background-color: rgba(123,198,164,0.1);
+}
+
+/* ============== ROLE CARDS ============== */
+.role-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #E5E9F0;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-padding: 16 8;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 4, 0, 0, 2);
+}
+
+.role-card:hover {
+    -fx-border-color: #7BC6A4;
+    -fx-background-color: #F8FDFA;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.15), 8, 0, 0, 0);
+    -fx-translate-y: -2;
+}
+
+.role-card-selected {
+    -fx-border-color: #7BC6A4;
+    -fx-background-color: #E8F0FE;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.2), 8, 0, 0, 0);
+}
+
+/* ============== UPLOAD PANEL ============== */
+.upload-panel {
+    -fx-background-color: #F8FDFA;
+    -fx-background-radius: 16;
+    -fx-border-color: #7BC6A4;
+    -fx-border-width: 2;
+    -fx-border-radius: 16;
+    -fx-border-style: dashed;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.1), 8, 0, 0, 0);
+}
+
+.upload-button {
+    -fx-background-color: #1F3C88;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 30;
+    -fx-padding: 0 25;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.2), 8, 0, 0, 0);
+}
+
+.upload-button:hover {
+    -fx-background-color: #2A4A9C;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.3), 12, 0, 0, 0);
+    -fx-translate-y: -1;
+}
+
+.upload-filename {
+    -fx-font-size: 13px;
+    -fx-text-fill: #4A4A4A;
+    -fx-font-style: italic;
+}
+
+/* ============== PRIMARY BUTTON ============== */
+.btn-primary-register {
+    -fx-background-color: #1F3C88;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 12;
+    -fx-padding: 0 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.2), 8, 0, 0, 0);
+    -fx-transition: all 0.2s ease;
+}
+
+.btn-primary-register:hover {
+    -fx-background-color: #2A4A9C;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.3), 12, 0, 0, 0);
+    -fx-translate-y: -1;
+}
+
+.btn-primary-register:pressed {
+    -fx-translate-y: 0;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.2), 8, 0, 0, 0);
+}
+
+/* ============== BACK BUTTON ============== */
+.back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4A4A4A;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+.back-button:hover {
+    -fx-text-fill: #1F3C88;
+}
+
+.back-button:hover .label {
+    -fx-text-fill: #1F3C88;
+}
+
+/* ============== SCROLLPANE ============== */
+.scroll-pane {
+    -fx-background: white;
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: white;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #D0D9E2;
+    -fx-background-radius: 6;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #7BC6A4;
+}
+
+/* ============== BORDERPANE ============== */
+.border-pane {
+    -fx-background-color: white;
+}
+
+/* ============== LEFT PANEL ============== */
+.left-panel {
+    -fx-background-color: linear-gradient(to bottom right, #E8F0FE, #7BC6A4);
+}
+
+/* ============== RESPONSIVE ============== */
+@media screen and (max-width: 1000px) {
+    .left-panel {
+        -fx-pref-width: 400;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .border-pane {
+        -fx-pref-width: 100%;
+    }
+}
+
+/* ============== LOGIN PAGE STYLES ============== */
+
+/* Login Button */
+.btn-primary-login {
+    -fx-background-color: #1F3C88;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 12;
+    -fx-padding: 0 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.2), 8, 0, 0, 0);
+    -fx-transition: all 0.2s ease;
+}
+
+.btn-primary-login:hover {
+    -fx-background-color: #2A4A9C;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.3), 12, 0, 0, 0);
+    -fx-translate-y: -1;
+}
+
+.btn-primary-login:pressed {
+    -fx-translate-y: 0;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.2), 8, 0, 0, 0);
+}
+
+/* Link Button */
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1F3C88;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+.btn-link:hover {
+    -fx-text-fill: #2A4A9C;
+}
+
+/* Status Label */
+.status-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}
+
+/* Role Cards (réutiliser depuis Register) */
+.role-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #E5E9F0;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-padding: 16 8;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.02), 4, 0, 0, 2);
+}
+
+.role-card:hover {
+    -fx-border-color: #7BC6A4;
+    -fx-background-color: #F8FDFA;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.15), 8, 0, 0, 0);
+    -fx-translate-y: -2;
+}
+
+.role-card-selected {
+    -fx-border-color: #7BC6A4;
+    -fx-background-color: #E8F0FE;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.2), 8, 0, 0, 0);
+}
+
+/* Modern Fields (réutiliser depuis Register) */
+.modern-field {
+    -fx-background-color: #F5F7FA;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-padding: 0 16;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #9AA6B2;
+    -fx-transition: all 0.2s ease;
+}
+
+.modern-field:hover {
+    -fx-background-color: white;
+    -fx-border-color: #7BC6A4;
+}
+
+.modern-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #7BC6A4;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(123,198,164,0.2), 8, 0, 0, 0);
+}
+
+/* ========== RADIO BUTTONS STYLING - MENSOS THEME ========== */
+.radio-button {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2C3E50;
+    -fx-padding: 10 0 10 0;
+    -fx-cursor: hand;
+}
+
+.radio-button .radio {
+    -fx-background-color: transparent;
+    -fx-border-color: #BDC3C7;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-padding: 6;
+    -fx-background-insets: 0;
+    -fx-background-radius: 50;
+    -fx-transition: all 0.2s ease;
+}
+
+.radio-button:hover .radio {
+    -fx-border-color: #7BC6A4;
+    -fx-border-width: 2.5;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: #1F3C88;
+    -fx-border-width: 2.5;
+    -fx-background-color: #E8F0FE;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #1F3C88;
+    -fx-background-radius: 50;
+    -fx-padding: 6;
+}
+
+.radio-button .text {
+    -fx-fill: #2C3E50;
+    -fx-font-weight: 500;
+}
+
+.radio-button:selected .text {
+    -fx-fill: #1F3C88;
+    -fx-font-weight: 700;
+}
+
+.radio-button:selected {
+    -fx-background-color: #F8FDFA;
+    -fx-background-radius: 12;
+    -fx-padding: 10 0 10 15;
+}
+
+/* ========== BUTTON HOVER EFFECTS ========== */
+#previousButton:hover {
+    -fx-background-color: #F5F7FA !important;
+    -fx-text-fill: #2C3E50 !important;
+    -fx-border-color: #1F3C88 !important;
+    -fx-border-width: 2 !important;
+}
+
+#nextButton:hover {
+    -fx-background-color: #2A4A9C !important;
+    -fx-effect: dropshadow(gaussian, rgba(31,60,136,0.3), 15, 0, 0, 3) !important;
+}
+
+#submitButton:hover {
+    -fx-background-color: #2ECC71 !important;
+    -fx-effect: dropshadow(gaussian, rgba(39,174,96,0.3), 15, 0, 0, 3) !important;
+}
+
+/* ========== PROGRESS BAR ========== */
+.progress-bar {
+    -fx-background-radius: 10;
+    -fx-background-color: #E8F0FE;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #7BC6A4;
+    -fx-background-radius: 10;
+}
+
+.progress-bar .track {
+    -fx-background-color: #E8F0FE;
+    -fx-background-radius: 10;
+}
+
+/* ========== SCROLLPANE ========== */
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: #C0D4E8;
+    -fx-background-radius: 6;
+}
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #7BC6A4;
+}
+
+/* Style pour les RadioButtons avec numéros */
+.radio-button {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2C3E50;
+    -fx-padding: 12 0 12 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+}
+
+.radio-button:hover {
+    -fx-background-color: #F8FDFA;
+}
+
+.radio-button:selected {
+    -fx-background-color: #E8F0FE;
+    -fx-border-color: #1F3C88;
+    -fx-border-width: 1.5;
+}
+
+.radio-button .radio {
+    -fx-border-color: #BDC3C7;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+    -fx-padding: 6;
+}
+
+.radio-button:selected .radio {
+    -fx-border-color: #1F3C88;
+    -fx-background-color: #1F3C88;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: white;
+    -fx-background-radius: 50;
+    -fx-padding: 4;
+}
+
+/* Style spécial pour le chiffre dans le texte */
+.radio-button .text {
+    -fx-font-weight: 500;
+}
+
+.radio-button:selected .text {
+    -fx-font-weight: 700;
+    -fx-fill: #1F3C88;
+}

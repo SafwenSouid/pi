@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.PatientDashboardController"
+            prefWidth="1400" prefHeight="900"
+            style="-fx-background-color: #F5F7FA;">
+
+    <!-- Header -->
+    <top>
+        <VBox style="-fx-background-color: #1F3C88; -fx-border-color: #E5E9F0; -fx-border-width: 0 0 1 0;">
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 20 40;">
+
+                <!-- Logo et titre -->
+                <HBox spacing="15" alignment="CENTER">
+                    <Label text="🧠" style="-fx-font-size: 32px; -fx-text-fill: #1F3C88;"/>
+                    <Label text="MENSOS" style="-fx-font-size: 24px; -fx-font-weight: 900; -fx-text-fill: white;"/>
+                    <Label text="•" style="-fx-font-size: 24px; -fx-text-fill: #7BC6A4;"/>
+                    <Label text="Mon espace patient" style="-fx-font-size: 20px; -fx-font-weight: 700; -fx-text-fill: white;"/>
+                </HBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Bouton déconnexion -->
+                <Button fx:id="logoutButton"
+                        text="🚪 Déconnexion"
+                        onAction="#handleLogout"
+                        style="-fx-background-color: #FEF5F5; -fx-text-fill: #E74C3C; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 30; -fx-padding: 10 25; -fx-cursor: hand;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: transparent;">
+            <VBox spacing="25" style="-fx-padding: 30 40;">
+
+                <!-- ========== PROFIL CARD AVEC PHOTO ========== -->
+                <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+
+                    <HBox alignment="CENTER_LEFT" spacing="25">
+                        <!-- ===== PHOTO DE PROFIL ===== -->
+                        <StackPane>
+                            <Circle radius="50" style="-fx-fill: #E8F0FE; -fx-stroke: #7BC6A4; -fx-stroke-width: 3;"/>
+                            <!-- Initiales (affiché quand pas de photo) -->
+                            <Label fx:id="avatarInitials" text="JD"
+                                   style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #1F3C88;"
+                                   visible="true"/>
+                            <!-- Photo de profil (caché par défaut) -->
+                            <ImageView fx:id="profileImageView"
+                                       fitWidth="100" fitHeight="100"
+                                       style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #7BC6A4; -fx-border-width: 3;"
+                                       preserveRatio="true"
+                                       visible="false"/>
+                        </StackPane>
+
+                        <!-- Infos patient -->
+                        <VBox spacing="10" HBox.hgrow="ALWAYS">
+                            <Label fx:id="patientNameLabel" text="Pierre Martin"
+                                   style="-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: #1F3C88;"/>
+                            <HBox spacing="20" alignment="CENTER_LEFT">
+                                <Label fx:id="patientAgeLabel" text="42 ans"
+                                       style="-fx-font-size: 16px; -fx-text-fill: #4A4A4A;"/>
+                                <Label text="•" style="-fx-font-size: 16px; -fx-text-fill: #7BC6A4;"/>
+                                <Label fx:id="patientEmailLabel" text="pierre.martin@email.com"
+                                       style="-fx-font-size: 16px; -fx-text-fill: #4A4A4A;"/>
+                                <Label text="•" style="-fx-font-size: 16px; -fx-text-fill: #7BC6A4;"/>
+                                <Label fx:id="patientPhoneLabel" text="+33 6 12 34 56 78"
+                                       style="-fx-font-size: 16px; -fx-text-fill: #4A4A4A;"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Bouton modifier -->
+                        <VBox alignment="TOP_RIGHT">
+                            <Button fx:id="editProfileButton"
+                                    text="✏️ Modifier mon profil"
+                                    onAction="#handleEditProfile"
+                                    style="-fx-background-color: transparent; -fx-text-fill: #1F3C88; -fx-font-size: 14px; -fx-font-weight: 600; -fx-border-color: #1F3C88; -fx-border-width: 1.5; -fx-border-radius: 30; -fx-background-radius: 30; -fx-padding: 8 20; -fx-cursor: hand;"/>
+                        </VBox>
+                    </HBox>
+
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <!-- Stats consultation -->
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="25"/>
+                            <ColumnConstraints percentWidth="25"/>
+                            <ColumnConstraints percentWidth="25"/>
+                            <ColumnConstraints percentWidth="25"/>
+                        </columnConstraints>
+
+                        <VBox spacing="8" style="-fx-background-color: #E8F0FE; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="0">
+                            <Label text="📅" style="-fx-font-size: 24px;"/>
+                            <Label text="Première consultation" style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;"/>
+                            <Label fx:id="firstConsultationLabel" text="10 Oct 2025"
+                                   style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                        </VBox>
+
+                        <VBox spacing="8" style="-fx-background-color: #E8F0FE; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <Label text="🩺" style="-fx-font-size: 24px;"/>
+                            <Label text="Dernière consultation" style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;"/>
+                            <Label fx:id="lastConsultationLabel" text="15 Jan 2026"
+                                   style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                        </VBox>
+
+                        <VBox spacing="8" style="-fx-background-color: #E8F0FE; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="2">
+                            <Label text="⏰" style="-fx-font-size: 24px;"/>
+                            <Label text="Prochain RDV" style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;"/>
+                            <Label fx:id="nextAppointmentLabel" text="25 Jan 2026"
+                                   style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #7BC6A4;"/>
+                        </VBox>
+
+                        <VBox spacing="8" style="-fx-background-color: #E8F0FE; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="3">
+                            <Label text="📊" style="-fx-font-size: 24px;"/>
+                            <Label text="Rapports totaux" style="-fx-font-size: 12px; -fx-text-fill: #7F8C8D;"/>
+                            <Label fx:id="totalReportsLabel" text="3"
+                                   style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+
+                <!-- Analyse IA -->
+                <VBox spacing="20"
+                      style="-fx-background-color: linear-gradient(to right, #FFF8E7, #F8FDFA); -fx-background-radius: 20; -fx-padding: 25; -fx-border-color: #FFB703; -fx-border-width: 2; -fx-border-radius: 20;">
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="✨" style="-fx-font-size: 28px;"/>
+                        <Label text="Analyse IA - Évolution de votre santé"
+                               style="-fx-font-size: 22px; -fx-font-weight: 800; -fx-text-fill: #1F3C88;"/>
+                        <Label text="IA" style="-fx-background-color: #FFB703; -fx-text-fill: white; -fx-padding: 5 15; -fx-background-radius: 25; -fx-font-size: 14px; -fx-font-weight: 700;"/>
+                    </HBox>
+
+                    <GridPane hgap="20" vgap="20">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="33.33"/>
+                            <ColumnConstraints percentWidth="33.33"/>
+                            <ColumnConstraints percentWidth="33.33"/>
+                        </columnConstraints>
+
+                        <!-- Humeur -->
+                        <VBox spacing="12" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="0">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Label text="😊" style="-fx-font-size: 24px;"/>
+                                <Label text="Humeur" style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="↑" style="-fx-font-size: 18px; -fx-text-fill: #4CAF50; -fx-font-weight: 700;"/>
+                            </HBox>
+                            <HBox alignment="BASELINE_LEFT" spacing="10">
+                                <Label fx:id="moodLabel" text="75%"
+                                       style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #4CAF50;"/>
+                                <Label fx:id="moodEvolutionLabel" text="+40%"
+                                       style="-fx-text-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: 600;"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Stress -->
+                        <VBox spacing="12" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="1">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Label text="😰" style="-fx-font-size: 24px;"/>
+                                <Label text="Niveau de stress" style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="↓" style="-fx-font-size: 18px; -fx-text-fill: #4CAF50; -fx-font-weight: 700;"/>
+                            </HBox>
+                            <HBox alignment="BASELINE_LEFT" spacing="10">
+                                <Label fx:id="stressLabel" text="30%"
+                                       style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #4CAF50;"/>
+                                <Label fx:id="stressEvolutionLabel" text="-45%"
+                                       style="-fx-text-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: 600;"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Anxiété -->
+                        <VBox spacing="12" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;"
+                              GridPane.rowIndex="0" GridPane.columnIndex="2">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Label text="😨" style="-fx-font-size: 24px;"/>
+                                <Label text="Anxiété" style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Label text="↓" style="-fx-font-size: 18px; -fx-text-fill: #4CAF50; -fx-font-weight: 700;"/>
+                            </HBox>
+                            <HBox alignment="BASELINE_LEFT" spacing="10">
+                                <Label fx:id="anxietyLabel" text="25%"
+                                       style="-fx-font-size: 32px; -fx-font-weight: 800; -fx-text-fill: #4CAF50;"/>
+                                <Label fx:id="anxietyEvolutionLabel" text="-45%"
+                                       style="-fx-text-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: 600;"/>
+                            </HBox>
+                        </VBox>
+                    </GridPane>
+
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;">
+                        <Label fx:id="iaRecommendationLabel" wrapText="true"
+                               text="Le patient montre une excellente évolution avec une amélioration de 40% de l'humeur et une réduction de 45% de l'anxiété."
+                               style="-fx-font-size: 15px; -fx-line-spacing: 5; -fx-text-fill: #4A4A4A;"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Rapports de consultation -->
+                <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="📋" style="-fx-font-size: 28px;"/>
+                        <Label text="Rapports de consultation"
+                               style="-fx-font-size: 22px; -fx-font-weight: 800; -fx-text-fill: #1F3C88;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="downloadAllButton"
+                                text="📥 Télécharger tout"
+                                onAction="#handleDownloadAll"
+                                style="-fx-background-color: #E8F0FE; -fx-text-fill: #1F3C88; -fx-font-size: 14px; -fx-font-weight: 600; -fx-background-radius: 30; -fx-padding: 10 25; -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <VBox fx:id="reportsContainer" spacing="20">
+                        <!-- Les rapports seront ajoutés dynamiquement -->
+                    </VBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

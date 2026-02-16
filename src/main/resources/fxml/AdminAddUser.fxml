@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.AdminAddUserController"
+            prefWidth="700" prefHeight="700"
+            style="-fx-background-color: white;">
+
+    <!-- Header -->
+    <top>
+        <VBox style="-fx-background-color: #27AE60; -fx-background-radius: 20 20 0 0; -fx-padding: 20 30;">
+            <Label text="➕ Ajouter un utilisateur"
+                   style="-fx-font-size: 22px; -fx-font-weight: 800; -fx-text-fill: white;"/>
+            <Label text="Créer un nouveau compte utilisateur"
+                   style="-fx-font-size: 14px; -fx-text-fill: rgba(255,255,255,0.9);"/>
+        </VBox>
+    </top>
+
+    <!-- Center -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true"
+                    style="-fx-background: white; -fx-background-color: white; -fx-border-color: transparent;">
+            <VBox spacing="25" style="-fx-padding: 30 40;">
+
+                <!-- Informations personnelles -->
+                <VBox spacing="15">
+                    <Label text="Informations personnelles"
+                           style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="30"/>
+                            <ColumnConstraints percentWidth="70"/>
+                        </columnConstraints>
+
+                        <!-- Nom -->
+                        <Label text="Nom :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="nomField" promptText="Nom"
+                                   styleClass="modern-field" prefHeight="45"
+                                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <!-- Prénom -->
+                        <Label text="Prénom :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="prenomField" promptText="Prénom"
+                                   styleClass="modern-field" prefHeight="45"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <!-- Email -->
+                        <Label text="Email :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="2" GridPane.columnIndex="1" spacing="5">
+                            <TextField fx:id="emailField" promptText="email@exemple.com"
+                                       styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="emailErrorLabel" text="Email invalide"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 11px;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+
+                        <!-- Téléphone -->
+                        <Label text="Téléphone :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="3" GridPane.columnIndex="1" spacing="5">
+                            <TextField fx:id="telephoneField" promptText="+33 6 12 34 56 78"
+                                       styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="phoneErrorLabel" text="Téléphone invalide"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 11px;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+
+                        <!-- Date de naissance -->
+                        <Label text="Date naissance :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="4" GridPane.columnIndex="1" spacing="5">
+                            <DatePicker fx:id="dateNaissanceField"
+                                        styleClass="modern-datepicker" prefHeight="45"
+                                        promptText="jj/mm/aaaa"/>
+                            <Label fx:id="ageErrorLabel" text="Âge minimum 18 ans"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 11px;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+
+                <!-- Rôle et statut -->
+                <VBox spacing="15">
+                    <Label text="Rôle et statut"
+                           style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="30"/>
+                            <ColumnConstraints percentWidth="70"/>
+                        </columnConstraints>
+
+                        <!-- Rôle -->
+                        <Label text="Rôle :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="roleComboBox" prefWidth="300" prefHeight="45"
+                                  styleClass="modern-field"
+                                  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <!-- Statut -->
+                        <Label text="Statut :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="actifCheckBox" text="Compte actif"
+                                  selected="true"
+                                  style="-fx-font-size: 14px; -fx-font-weight: 600;"
+                                  GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+
+                <!-- Mot de passe -->
+                <VBox spacing="15">
+                    <Label text="Mot de passe"
+                           style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1F3C88;"/>
+                    <Separator style="-fx-background-color: #E8F0FE;"/>
+
+                    <GridPane hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="30"/>
+                            <ColumnConstraints percentWidth="70"/>
+                        </columnConstraints>
+
+                        <!-- Mot de passe -->
+                        <Label text="Mot de passe :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="0" GridPane.columnIndex="1" spacing="5">
+                            <PasswordField fx:id="motDePasseField"
+                                           promptText="********"
+                                           styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="passwordErrorLabel"
+                                   text="Minimum 6 caractères, 1 majuscule, 1 chiffre"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 11px;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+
+                        <!-- Confirmation -->
+                        <Label text="Confirmer :" style="-fx-font-size: 14px; -fx-font-weight: 600; -fx-text-fill: #4A4A4A;"
+                               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" spacing="5">
+                            <PasswordField fx:id="confirmPasswordField"
+                                           promptText="********"
+                                           styleClass="modern-field" prefHeight="45"/>
+                            <Label fx:id="confirmErrorLabel" text="Les mots de passe ne correspondent pas"
+                                   style="-fx-text-fill: #E74C3C; -fx-font-size: 11px;"
+                                   visible="false" managed="false"/>
+                        </VBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="15"
+              style="-fx-background-color: #F8FAFD; -fx-padding: 20 30; -fx-border-color: #E8F0FE; -fx-border-width: 1 0 0 0;">
+            <Button fx:id="cancelButton"
+                    text="Annuler"
+                    onAction="#handleCancel"
+                    prefWidth="120" prefHeight="45"
+                    style="-fx-background-color: white; -fx-text-fill: #7F8C8D; -fx-font-size: 14px; -fx-font-weight: 600; -fx-border-color: #BDC3C7; -fx-border-width: 2; -fx-border-radius: 30; -fx-background-radius: 30; -fx-cursor: hand;"/>
+            <Button fx:id="saveButton"
+                    text="➕ Créer l'utilisateur"
+                    onAction="#handleSave"
+                    prefWidth="200" prefHeight="45"
+                    style="-fx-background-color: #27AE60; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 700; -fx-background-radius: 30; -fx-cursor: hand;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
